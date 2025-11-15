@@ -1,0 +1,257 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Press Start 2P', cursive;
+    image-rendering: pixelated;
+  }
+}
+
+@layer components {
+  .pixel-bg {
+    @apply relative overflow-hidden;
+    background: #0f0f1e;
+    background-size: 3px 3px;
+  }
+
+
+  .pixel-bg::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background-image:
+      linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, 0.05) 25%, rgba(34, 197, 94, 0.05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.05) 75%, rgba(34, 197, 94, 0.05) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent),
+      radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%;
+    z-index: 1;
+  }
+
+  .pixel-bg::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 85% 70%, rgba(34, 197, 94, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 40%);
+    z-index: 2;
+  }
+
+  .pixel-clouds {
+    @apply absolute inset-0 pointer-events-none overflow-hidden opacity-20;
+  }
+
+  .cloud {
+    @apply absolute;
+    image-rendering: pixelated;
+  }
+
+  .pixel-border {
+    position: relative;
+    box-shadow:
+      0 0 0 4px currentColor,
+      0 0 0 5px rgba(0, 0, 0, 0.3),
+      0 4px 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .pixel-border-thin {
+    position: relative;
+    box-shadow:
+      0 0 0 2px currentColor,
+      0 0 0 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .pixel-button {
+    @apply relative transition-all duration-75;
+    box-shadow:
+      0 0 0 3px currentColor,
+      0 4px 0 3px rgba(0, 0, 0, 0.5);
+    image-rendering: pixelated;
+  }
+
+  .pixel-button:active {
+    transform: translateY(2px);
+    box-shadow:
+      0 0 0 3px currentColor,
+      0 2px 0 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .pixel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .pixel-card {
+    @apply relative bg-gray-900 overflow-hidden;
+    box-shadow:
+      0 0 0 3px #fff,
+      0 0 0 4px #000,
+      0 6px 0 4px #000;
+    image-rendering: pixelated;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .pixel-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(251, 191, 36, 0.3) 0%, transparent 60%);
+    z-index: 10;
+  }
+
+  .pixel-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .pixel-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 0 0 3px #fbbf24,
+      0 0 0 4px #000,
+      0 14px 0 4px #000,
+      0 0 30px rgba(251, 191, 36, 0.4);
+  }
+
+  .content-wrapper {
+    @apply relative z-10;
+  }
+
+  .coin-animation {
+    animation: coin-spin 0.6s steps(6) infinite, coin-float 2s ease-in-out infinite;
+  }
+
+  .heart-animation {
+    animation: heart-beat 1s steps(4) infinite;
+  }
+
+  .level-badge {
+    @apply inline-block px-3 py-1 text-xs;
+    background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow:
+      0 0 0 2px #78350f,
+      0 0 0 3px #000,
+      inset 0 -2px 0 0 #b45309;
+  }
+
+  .score-display {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow:
+      0 0 0 2px #fbbf24,
+      0 0 0 3px #000,
+      inset 0 2px 0 0 rgba(251, 191, 36, 0.2),
+      inset 0 -2px 0 0 rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(251, 191, 36, 0.2);
+    animation: score-pulse 2s ease-in-out infinite;
+  }
+
+  .loading-pixels {
+    @apply flex gap-1;
+  }
+
+  .loading-pixel {
+    @apply w-3 h-3 bg-yellow-400;
+    box-shadow: 0 0 0 1px #000;
+    animation: pixel-bounce 0.8s ease-in-out infinite;
+  }
+
+  .loading-pixel:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .loading-pixel:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+
+@keyframes coin-float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pixel-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes float-cloud {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5),
+      0 0 20px rgba(251, 191, 36, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8),
+      0 0 30px rgba(251, 191, 36, 0.5);
+  }
+}
+
+@keyframes bg-shift {
+
+  0%,
+  100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0 0, 0 0, 0 0;
+  }
+
+  50% {
+    background-position: 100% 100%, 50% 50%, 80% 20%, 0 0, 0 0, 40px 40px;
+  }
+}
+
+@keyframes score-pulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px #fbbf24,
+      0 0 0 3px #000,
+      inset 0 2px 0 0 rgba(251, 191, 36, 0.2),
+      inset 0 -2px 0 0 rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(251, 191, 36, 0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 2px #fbbf24,
+      0 0 0 3px #000,
+      inset 0 2px 0 0 rgba(251, 191, 36, 0.3),
+      inset 0 -2px 0 0 rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(251, 191, 36, 0.4);
+  }
+}
+
+.quest-glow-container:hover .quest-title {
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.8),
+    0 0 40px rgba(251, 191, 36, 0.6),
+    0 0 60px rgba(251, 191, 36, 0.4);
+}
