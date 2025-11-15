@@ -1,5 +1,5 @@
 export async function searchImages(query) {
-  const response = await fetch(`http://localhost:5000/api/search?q=${encodeURIComponent(query)}`);
+  const response = await fetch(`https://pixelquest-e8ma.onrender.com/api/search?q=${encodeURIComponent(query)}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch images");
