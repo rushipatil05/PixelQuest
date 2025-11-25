@@ -1,5 +1,5 @@
 import express from "express";
-import axios from "axios";
+import axios from "axios";//make api call to pixabay
 import cors from "cors";
 import dotenv from "dotenv";
 

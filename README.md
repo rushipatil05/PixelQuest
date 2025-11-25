@@ -46,7 +46,6 @@
 │   │   │   ├── ImageCard.jsx
 │   │   │   ├── ImageGrid.jsx
 │   │   │   ├── PixelClouds.jsx
-│   │   │   ├── PixelField.jsx
 │   │   │   └── SearchBar.jsx
 │   │   │
 │   │   ├── 📂 services
