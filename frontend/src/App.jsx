@@ -13,15 +13,19 @@ function App() {
 
   const handleSearch = async (query) => {
     if (!query.trim()) return;
+    
     setLoading(true);
     setError('');
+
     try {
       const results = await searchImages(query);
       setImages(results);
-      setScore(prev => prev + results.length);
+      setScore(prev => prev + 1);
     } catch (err) {
+
       setError('Quest Failed! Try again.');
       console.error(err);
+
     } finally {
       setLoading(false);
     }
@@ -40,7 +44,6 @@ function App() {
             <Trophy className="w-3 h-3 inline mr-2" />
             LVL 1
           </div>
-
         </div>
 
         <div className="text-center mb-12">
@@ -79,6 +82,7 @@ function App() {
             </div>
           </div>
         )}
+
 
         {!loading && images.length > 0 && (
           <ImageGrid images={images} />
