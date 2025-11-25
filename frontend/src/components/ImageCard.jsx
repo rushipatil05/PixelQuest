@@ -20,14 +20,13 @@ export default function ImageCard({ image }) {
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Image */}
+
       <img
         src={thumbnail}
         alt="Image"
         className="w-full h-48 object-cover"
       />
 
-      {/* Info */}
       <div className="p-3 text-white text-sm">
         <p className="mb-2 truncate">{photographer}</p>
 
