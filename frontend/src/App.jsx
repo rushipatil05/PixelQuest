@@ -52,7 +52,7 @@ function App() {
               PIXEL SEARCH
             </h1>
             <div className="quest-glow-container">
-              <div className="text-3xl md:text-6xl font-bold text-yellow-400 mb-6 tracking-tight transition-all duration-300 quest-title inline-block" style={{ lineHeight: '1.3' }}>
+              <div className="text-3xl md:text-6xl font-bold text-yellow-400 mb-6 tracking-tight transition-all duration-300 inline-block" style={{ lineHeight: '1.3' }}>
                 QUEST
               </div>
             </div>

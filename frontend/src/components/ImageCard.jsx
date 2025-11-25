@@ -14,11 +14,8 @@ export default function ImageCard({ image }) {
 
   return (
     <motion.div
-      className="bg-gray-900 rounded-lg overflow-hidden shadow-md"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      className="bg-gray-800 rounded-lg overflow-hidden shadow-md"
       whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
     >
 
       <img
@@ -33,7 +30,6 @@ export default function ImageCard({ image }) {
         <a
           href={fullImage}
           target="_blank"
-          rel="noopener noreferrer"
           className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-md text-xs font-semibold inline-block"
         >
           VIEW
